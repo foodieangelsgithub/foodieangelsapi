@@ -31,7 +31,7 @@ Luego vaya al siguiente archivo y edite los datos de nombre a su gusto *src/Data
 
 Una vez editado ejecute lo siguiente
 
-**php bin/console doctrine:fixtures:load**
+> **php bin/console doctrine:fixtures:load**
 
 Una vez que haya hecho todo configure el apache para que apunte a la ruta ./public/.
 
