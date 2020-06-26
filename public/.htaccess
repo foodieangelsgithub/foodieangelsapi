@@ -1,0 +1,12 @@
+Header Set Access-Control-Allow-Origin "*"
+Header Set Access-Control-Allow-Credentials "*"
+Header Set Access-Control-Allow-Methods "GET, POST, PUT, OPTIONS"
+Header set Access-Control-Allow-Headers "x-auth-token, content-type, authorization"
+
+
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule (.+) /api/index.php?p=$1 [QSA,L]
+

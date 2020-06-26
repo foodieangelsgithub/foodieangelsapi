@@ -1,0 +1,132 @@
+<?php
+
+namespace App\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\SituacionLaboralRepository")
+ */
+class SituacionLaboral
+{
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $nombre;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Beneficiario", mappedBy="sitLaboral")
+     */
+    private $beneficiarios;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Integrantes", mappedBy="sitLaboral", orphanRemoval=true)
+     */
+    private $integrantes;
+
+    public function __construct()
+    {
+        $this->beneficiarios = new ArrayCollection();
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getNombre(): ?string
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * @param string $nombre
+     * @return $this
+     */
+    public function setNombre(string $nombre): self
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+
+    /**
+     * @return Collection|Beneficiario[]
+     */
+    public function getBeneficiarios(): Collection
+    {
+        return $this->beneficiarios;
+    }
+
+    public function addBeneficiario(Beneficiario $beneficiario): self
+    {
+        if (!$this->beneficiarios->contains($beneficiario)) {
+            $this->beneficiarios[] = $beneficiario;
+            $beneficiario->setMunicipio($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBeneficiario(Beneficiario $beneficiario): self
+    {
+        if ($this->beneficiarios->contains($beneficiario)) {
+            $this->beneficiarios->removeElement($beneficiario);
+            // set the owning side to null (unless already changed)
+            if ($beneficiario->getMunicipio() === $this) {
+                $beneficiario->setMunicipio(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getIntegrante(){
+        return $this->integrantes;
+    }
+
+    /**
+     * @param Integrantes $integrantes
+     * @return $this
+     */
+    public function setIntegrante(Integrantes $integrantes): self
+    {
+        $this->integrantes=$integrantes;
+        return $this;
+    }
+
+
+    /**
+     * @return array
+     */
+    public function objectToArray()
+    {
+        $data=[
+            'id'=>$this->getId(),
+            'nombre'=>$this->getNombre()
+        ];
+
+        return $data;
+        // TODO: Implement objectToArray() method.
+    }
+}
