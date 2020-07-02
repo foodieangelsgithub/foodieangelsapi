@@ -2,10 +2,15 @@
 
 namespace App\Repository;
 
+use App\Entity\Integrantes;
 use App\Entity\Voluntario;
 use App\Helper\repositoryTrait;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\DBAL\Driver\DriverException;
+use Doctrine\ORM\ORMException;
 
 /**
  * @method Voluntario|null find($id, $lockMode = null, $lockVersion = null)
@@ -101,6 +106,9 @@ class VoluntarioRepository extends ServiceEntityRepository
     }
 
 
+    /**
+     * @return ArrayCollection|Voluntario[]
+     */
     public function getAmbito($codigo){
 
         $entityManager = $this->getEntityManager();
@@ -118,14 +126,7 @@ class VoluntarioRepository extends ServiceEntityRepository
 
         // returns an array of Product objects
         return $query->getResult();
-/*
-        $qb = $this->createQueryBuilder('u');
-        $qb->select('u')
-            ->where('u.ambitoRecogida LIKE :ambito')
-            ->setParameter('ambito', '%"'.$codigo.'"%');
 
-        return $qb->getQuery()->getResult();
-*/
     }
 
 }

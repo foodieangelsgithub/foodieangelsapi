@@ -87,9 +87,7 @@ class UserController extends BaseController
                 $users = $this->userRepository->findUserByRol($this->getrequest()->get('id'));
             }
             if (is_array($users)) {
-                /**
-                 * @var $user User
-                 */
+
                 foreach ($users as $user) {
 
                     if(($this->getUser()->getUsername()!='admin' && $user->getUsername()!='admin') || $this->getUser()->getUsername()=='admin'){

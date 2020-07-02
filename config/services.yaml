@@ -7,36 +7,13 @@ parameters:
     services_images: '%kernel.project_dir%/public/uploads/service_images'
     directory_images: '/uploads/service_images'
 
-    #Servicio PushBots
-    applitationId: '5ec526291aeaf73af92cd5b2'
-    applicationSecret: 'bb668f7c3e3c0a8246d96571d5f8eff8'
-
-    #Servicio oneSignal
-    oneSignalapplicationId: 'dc4ab90b-d613-4303-99b6-2b7d4011ef55'
-    restApiKey: 'MjE3YmE3MGQtNTYyYi00Yzk1LTllMzAtZDQ5ZjJmNWZhYWVm'
-
-    onesignalmessage.es.beneficiario.solicitado: 'Hay una donación de -producto- en tu zona'
-    onesignalmessage.es.beneficiario.entrega: 'Su solicitud ya ha sido recogida\n por -USER- \ny pronto será entregada'
-    onesignalmessage.es.voluntario.recogida: 'Hay una recogida de alimentos en tu zona'
-    onesignalmessage.es.proveedor.entrega: 'Se ha entregado -PARTE- su donacion'
-    onesignalmessage.es.proveedor.recogida: '-USER-\n irá a recoger la donacion'
-    onesignalmessage.es.proveedor.cancel: '-USER-\n ha cancelado la recogida de la donacion'
-
-    onesignalmessage.en.beneficiario.solicitado: 'There is a donation of -producto- in your area'
-    onesignalmessage.en.beneficiario.entrega: 'Your request has already been collected\n by -USER- \nand will soon be delivered'
-    onesignalmessage.en.voluntario.recogida: 'There is a distribution of food in your area'
-    onesignalmessage.en.proveedor.entrega: 'It has been delivered -PART- your donation'
-    onesignalmessage.en.proveedor.recogida: '-USER-\n will go to collect the donation'
-    onesignalmessage.en.proveedor.cancel: '-USER-\n has canceled to collect of donation'
-
-    #Kilometros
-    maxdistance: 10
-
 services:
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        bind:
+
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
@@ -47,8 +24,10 @@ services:
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
     App\Controller\:
+        autowire: true
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
+
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

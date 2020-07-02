@@ -1,0 +1,33 @@
+parameters:
+    #Servicio PushBots
+    applitationId: '5ec526291aeaf73af92cd5b2'
+    applicationSecret: 'bb668f7c3e3c0a8246d96571d5f8eff8'
+
+    #Servicio oneSignal
+    oneSignalapplicationId: 'dc4ab90b-d613-4303-99b6-2b7d4011ef55'
+    restApiKey: 'MjE3YmE3MGQtNTYyYi00Yzk1LTllMzAtZDQ5ZjJmNWZhYWVm'
+
+    onesignalmessage.es.beneficiario.solicitado: 'Hay una donación de -producto- en tu zona'
+    onesignalmessage.es.beneficiario.entrega: 'Su solicitud ya ha sido recogida\n por -USER- \ny pronto será entregada'
+    onesignalmessage.es.voluntario.recogida: 'Hay una recogida de alimentos en tu zona'
+    onesignalmessage.es.proveedor.entrega: 'Se ha entregado -PARTE- su donacion'
+    onesignalmessage.es.proveedor.recogida: '-USER-\n irá a recoger la donacion'
+    onesignalmessage.es.proveedor.cancel: '-USER-\n ha cancelado la recogida de la donacion'
+
+    onesignalmessage.en.beneficiario.solicitado: 'There is a donation of -producto- in your area'
+    onesignalmessage.en.beneficiario.entrega: 'Your request has already been collected\n by -USER- \nand will soon be delivered'
+    onesignalmessage.en.voluntario.recogida: 'There is a distribution of food in your area'
+    onesignalmessage.en.proveedor.entrega: 'It has been delivered -PART- your donation'
+    onesignalmessage.en.proveedor.recogida: '-USER-\n will go to collect the donation'
+    onesignalmessage.en.proveedor.cancel: '-USER-\n has canceled to collect of donation'
+
+
+    #Kilometros: Poner siempre un número mayor de 0 sino el bucle es infinito y bloquearía la app
+    min.distance.voluntarios: 1 #Mínimo de kilometros para buscar voluntario
+    min.distance.beneficiarios: 1 #Mínimo de kilometros para buscar beneficiarios
+
+    max.distance.voluntarios: 10 #Máximo de kilometros para buscar voluntario
+    max.distance.beneficiarios: 10 #Máximo de kilometros para buscar beneficiarios
+
+    max.cant.voluntarios: 30 #Máximo de voluntarios antes de llegar a max.distance.v kilómetros
+    max.cant.beneficiarios: 30 #Máximo de beneficiarios antes de llegar a max.distance.b kilómetros

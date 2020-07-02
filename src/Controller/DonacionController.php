@@ -115,10 +115,8 @@ class DonacionController extends BaseController
             $donacions = $this->donacionRepository->findBy(['estado'=>1]);
             if($donacions){
                 foreach ($donacions as $donacion) {
-                    if ($dataToReturns = $this->codigosPostalesController->setDonacion($donacion)->getBeneficiariosToSend($donacion->getProveedorId()->getCodPostal())) {
-                        foreach ($dataToReturns as $dataToReturn) {
-                            $data[] = $dataToReturn->getDonacion()->objectToArray();
-                        }
+                    if ($this->codigosPostalesController->setDonacion($donacion)->getBeneficiariosToSend($donacion->getProveedorId()->getCodPostal())==true) {
+                        $data[] = $donacion->objectToArray();
                     }
                 }
             } else {

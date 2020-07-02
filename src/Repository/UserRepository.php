@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\User;
 use App\Helper\repositoryTrait;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\DBAL\Exception\DriverException;
 use Doctrine\ORM\ORMException;
@@ -100,8 +101,7 @@ class UserRepository extends ServiceEntityRepository
 
 
     /**
-     * @param $rol
-     * @return int|mixed|string
+     * @return ArrayCollection|User[]
      */
     public function findUserByRol($rol){
         $query = $this->getEntityManager()
