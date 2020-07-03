@@ -110,7 +110,7 @@ class CodigosPostalesController extends BaseController
      */
     public function pruebaEnvio(){
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
-        return $this->getBeneficiariosToSend('28037');
+        return $this->getBeneficiariosToSend('25037');
     }
 
 
@@ -134,7 +134,10 @@ class CodigosPostalesController extends BaseController
                     $this->donacionUserRepository->saveData($donacionUser);
                     $this->donacionUserRepository->getEntityManagerTransaction()->commit();
 
-                    if ($beneficiario->getUserid()->getId() == $this->getUser()->getId()) return true;
+                    if ($beneficiario->getUserid()->getId() == $this->getUser()->getId()) {
+                        return true;
+                        break;
+                    }
                 }
 
                 $this->distancia->setDistanciaMinB(++$distancia);
@@ -155,7 +158,10 @@ class CodigosPostalesController extends BaseController
                 $voluntarios = $this->voluntarioRepository->getAmbito($codigos);
 
                 foreach ($voluntarios as $voluntario) {
-                    if ($this->getUser()->getId() == $voluntario->getUserid()->getId()) return true;
+                    if ($this->getUser()->getId() == $voluntario->getUserid()->getId()) {
+                        return true;
+                        break;
+                    }
                 }
             }
             $this->distancia->setDistanciaMinV(++$distancia);
