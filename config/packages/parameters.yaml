@@ -4,8 +4,8 @@ parameters:
     applicationSecret: 'bb668f7c3e3c0a8246d96571d5f8eff8'
 
     #Servicio oneSignal
-    oneSignalapplicationId: 'dc4ab90b-d613-4303-99b6-2b7d4011ef55'
-    restApiKey: 'MjE3YmE3MGQtNTYyYi00Yzk1LTllMzAtZDQ5ZjJmNWZhYWVm'
+    oneSignalapplicationId: '28a9ac3b-4e25-46bc-8ae9-5e95ff0b7cad'
+    restApiKey: 'ZDc3ODhmZjUtNjdiZC00OWUzLWJlMGYtZTRkNDU3NzgxOTVm'
 
     onesignalmessage.es.beneficiario.solicitado: 'Hay una donación de -producto- en tu zona'
     onesignalmessage.es.beneficiario.entrega: 'Su solicitud ya ha sido recogida\n por -USER- \ny pronto será entregada'

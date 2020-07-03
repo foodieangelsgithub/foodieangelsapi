@@ -110,7 +110,7 @@ class CodigosPostalesController extends BaseController
      */
     public function pruebaEnvio(){
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
-        return $this->getVoluntariosCercanos('28030');
+        return $this->getBeneficiariosToSend('28037');
     }
 
 
@@ -119,13 +119,14 @@ class CodigosPostalesController extends BaseController
 
         $distancia=$this->distancia->getDistanciaMinB();
 
-        if($distancia < $this->distancia->getDistanciaMaxB()){
+        if($distancia <= $this->distancia->getDistanciaMaxB()){
             if($codigos=$this->getCodigosPostales($codigoPostal, $distancia)) {
+
                 $beneficiarios = $this->beneficiarioRepository->findBy(['codPostal' => $codigos]);
 
-                foreach ($beneficiarios as $beneficiario){
-                    if(!$donacionUser = $this->donacionUserRepository->findOneBy(['user'=>$beneficiario->getUserid(), 'donacion'=>$this->donacion])){
-                        $donacionUser=new DonacionUser();
+                foreach ($beneficiarios as $beneficiario) {
+                    if (!$donacionUser = $this->donacionUserRepository->findOneBy(['user' => $beneficiario->getUserid(), 'donacion' => $this->donacion])) {
+                        $donacionUser = new DonacionUser();
                     }
 
                     $donacionUser->setUser($beneficiario->getUserid())
@@ -133,9 +134,9 @@ class CodigosPostalesController extends BaseController
                     $this->donacionUserRepository->saveData($donacionUser);
                     $this->donacionUserRepository->getEntityManagerTransaction()->commit();
 
-                    if($beneficiario->getUserid()->getId()==$this->getUser()->getId()) return true;
+                    if ($beneficiario->getUserid()->getId() == $this->getUser()->getId()) return true;
                 }
-            }else{
+
                 $this->distancia->setDistanciaMinB(++$distancia);
                 $this->getBeneficiariosToSend($codigoPostal);
             }
@@ -156,10 +157,9 @@ class CodigosPostalesController extends BaseController
                 foreach ($voluntarios as $voluntario) {
                     if ($this->getUser()->getId() == $voluntario->getUserid()->getId()) return true;
                 }
-            } else {
-                $this->distancia->setDistanciaMinV(++$distancia);
-                $this->getVoluntariosToSend($codigoPostal);
             }
+            $this->distancia->setDistanciaMinV(++$distancia);
+            $this->getVoluntariosToSend($codigoPostal);
         }
         return false;
     }

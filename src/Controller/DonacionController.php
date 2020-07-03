@@ -149,8 +149,6 @@ class DonacionController extends BaseController
             $message=$this->getNoData();
         }
 
-
-
         $this->jsonSuccess($data, $message);
         return $this;
     }
