@@ -136,12 +136,11 @@ class CodigosPostalesController extends BaseController
 
                     if ($beneficiario->getUserid()->getId() == $this->getUser()->getId()) {
                         return true;
-                        break;
                     }
                 }
 
                 $this->distancia->setDistanciaMinB(++$distancia);
-                $this->getBeneficiariosToSend($codigoPostal);
+                return $this->getBeneficiariosToSend($codigoPostal);
             }
         }
 
@@ -160,12 +159,11 @@ class CodigosPostalesController extends BaseController
                 foreach ($voluntarios as $voluntario) {
                     if ($this->getUser()->getId() == $voluntario->getUserid()->getId()) {
                         return true;
-                        break;
                     }
                 }
             }
             $this->distancia->setDistanciaMinV(++$distancia);
-            $this->getVoluntariosToSend($codigoPostal);
+            return $this->getVoluntariosToSend($codigoPostal);
         }
         return false;
     }
