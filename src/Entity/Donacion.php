@@ -54,8 +54,9 @@ class Donacion
      */
     private $fechaModi;
 
+
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Servicio", mappedBy="donacion", orphanRemoval=false)
+     * @ORM\OneToMany(targetEntity="App\Entity\Servicio", mappedBy="donacion", orphanRemoval=true)
      */
     private $servicio;
 

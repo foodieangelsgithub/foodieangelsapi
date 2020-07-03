@@ -19,7 +19,7 @@ class Proveedor
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="proveedores")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="proveedor")
      * @ORM\JoinColumn(name="userid", nullable=false)
      */
     private $userid;

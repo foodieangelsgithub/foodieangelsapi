@@ -20,7 +20,7 @@ class Servicio
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Donacion", inversedBy="donacion")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Donacion", inversedBy="servicio")
      * @ORM\JoinColumn(name="donacion_id",nullable=false)
      */
     private $donacion;

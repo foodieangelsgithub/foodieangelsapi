@@ -72,11 +72,6 @@ class User implements UserInterface
     private $beneficiarios;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Proveedor", mappedBy="userid", orphanRemoval=true)
-     */
-    private $proveedores;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Voluntario", mappedBy="userid", orphanRemoval=true)
      */
     private $voluntarios;
@@ -355,37 +350,6 @@ class User implements UserInterface
             'rol'       => $this->getRoles()
         );
         return $data;
-    }
-
-    /**
-     * @return Collection|Proveedor[]
-     */
-    public function getProveedores(): Collection
-    {
-        return $this->proveedores;
-    }
-
-    public function addProveedore(Proveedor $proveedore): self
-    {
-        if (!$this->proveedores->contains($proveedore)) {
-            $this->proveedores[] = $proveedore;
-            $proveedore->setUserid($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProveedore(Proveedor $proveedore): self
-    {
-        if ($this->proveedores->contains($proveedore)) {
-            $this->proveedores->removeElement($proveedore);
-            // set the owning side to null (unless already changed)
-            if ($proveedore->getUserid() === $this) {
-                $proveedore->setUserid(null);
-            }
-        }
-
-        return $this;
     }
 
     /**

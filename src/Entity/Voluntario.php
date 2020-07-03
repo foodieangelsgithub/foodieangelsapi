@@ -63,9 +63,10 @@ class Voluntario
     private $fechaModi;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Servicio", mappedBy="voluntario", orphanRemoval=false)
+     * @ORM\OneToMany(targetEntity="App\Entity\Servicio", mappedBy="voluntario_id", orphanRemoval=true)
      */
     private $servicio;
+
 
 
     /**
