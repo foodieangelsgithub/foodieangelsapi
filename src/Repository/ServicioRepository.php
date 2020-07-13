@@ -34,6 +34,7 @@ class ServicioRepository extends ServiceEntityRepository
     public function insertServicio(Servicio $servicio){
         $this->setEntityManagerTransaction($this->getEntityManager());
         $this->getEntityManagerTransaction()->beginTransaction();
+        $servicio->setFechaModi(new \DateTime());
 
         try {
             $this->getEntityManagerTransaction()->persist($servicio);

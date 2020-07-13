@@ -62,6 +62,7 @@ class DonacionRepository extends ServiceEntityRepository
     public function saveDonacion(Donacion $donacion){
         $this->setEntityManagerTransaction($this->getEntityManager());
         $this->getEntityManagerTransaction()->beginTransaction();
+        $donacion->setFechaModi(new \DateTime());
 
         try {
             $this->getEntityManagerTransaction()->persist($donacion);

@@ -88,6 +88,8 @@ class VoluntarioRepository extends ServiceEntityRepository
         $this->setEntityManagerTransaction($this->getEntityManager());
         $this->getEntityManagerTransaction()->beginTransaction();
 
+        $voluntario->setFechaModi(new \DateTime());
+
         try {
             $this->getEntityManagerTransaction()->persist($voluntario);
             $this->getEntityManagerTransaction()->flush();

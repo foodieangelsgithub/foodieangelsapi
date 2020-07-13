@@ -36,6 +36,8 @@ class BeneficiarioRepository extends ServiceEntityRepository
         $this->setEntityManagerTransaction($this->getEntityManager());
         $this->getEntityManagerTransaction()->beginTransaction();
 
+        $beneficiario->setFechaModi(new \DateTime());
+
 
         try {
             $this->getEntityManagerTransaction()->flush($beneficiario);

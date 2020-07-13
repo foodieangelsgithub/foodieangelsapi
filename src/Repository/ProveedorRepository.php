@@ -63,6 +63,7 @@ class ProveedorRepository extends ServiceEntityRepository
     {
         $this->setEntityManagerTransaction($this->getEntityManager());
         $this->getEntityManagerTransaction()->beginTransaction();
+        $proveedor->setFechaModi(new \DateTime());
 
         try {
             $this->getEntityManagerTransaction()->flush($proveedor);

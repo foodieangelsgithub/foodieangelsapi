@@ -277,8 +277,8 @@ class Servicio
 
 
             'rutaFoto'                  => $this->getRutaFoto(),
-            'fecha'                     => ($this->getFecha()!=NULL)?$this->getFecha()->format('Y-m-d h:i:s'):null,
-            'fechaModi'                 => ($this->getFechaModi()!=NULL)?$this->getFechaModi()->format('Y-m-d h:i:s'):null,
+            //'fecha'                     => ($this->getFecha()!=NULL)?$this->getFecha()->format('Y-m-d h:i:s'):null,
+            'fecha'                 => ($this->getFechaModi()!=NULL)?$this->getFechaModi()->format('Y-m-d h:i:s'):null,
             'estado'                    => $this->getEstado(),
             'direccion'                 => $this->getDonacion()->getProveedorId()->getDireccion()
 
